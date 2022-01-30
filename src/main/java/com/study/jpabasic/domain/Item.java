@@ -5,10 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,6 +23,8 @@ public class Item {
     private String name;
     private int price;
     private int stockQuantity;
-
+    @OneToMany(mappedBy = "item")
+    @JoinColumn
+    private List<OrderItem> orderItems = new ArrayList<>();
 
 }
